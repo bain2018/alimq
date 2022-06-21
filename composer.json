@@ -1,13 +1,13 @@
 {
-    "name": "aliyunmq/mq-http-sdk",
+    "name": "bain2018/alimq",
     "type": "library",
-    "description": "Aliyun Message Queue(MQ) Http PHP SDK, PHP>=5.5.0",
+    "description": "Aliyun Rocket MQ",
     "keywords": ["Aliyun","Alicloud", "MQ", "Message Queue", "Message", "Queue"],
-    "homepage": "https://github.com/aliyunmq/mq-http-php-sdk",
+    "homepage": "https://github.com/bain2018/alimq",
     "license": "MIT",
     "require": {
-        "php": ">=5.5.0",
-        "guzzlehttp/guzzle": ">=6.0.0"
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": ">=7.0.0"
     },
     "repositories": {
         "packagist": {
