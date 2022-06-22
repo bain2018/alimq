@@ -45,30 +45,34 @@ class HttpClient
         }
         $this->agent = Constants::CLIENT_VERSION . $guzzleVersion . " PHP/" . PHP_VERSION . ")";
 
-
-//        $this->client = new \GuzzleHttp\Client([
-//            'base_uri' => $endPoint,
-//            'defaults' => [
-//                'headers' => [
-//                    'Host' => $endPoint
-//                ],
-//                'proxy' => $config->getProxy(),
-//                'expect' => $config->getExpectContinue()
-//            ]
-//        ]);
-
-        $container = \Hyperf\Utils\ApplicationContext::getContainer();
-        $this->client = $container->get(\Hyperf\Guzzle\ClientFactory::class)->create([
-            'base_uri' => $endPoint,
-            'defaults' => [
-                'headers' => [
-                    'Host' => $endPoint
-                ],
-                'proxy' => $config->getProxy(),
-                'expect' => $config->getExpectContinue()
-            ]
-        ]);
-
+        if (class_exists(\Hyperf\Utils\ApplicationContext::class))
+        {
+            
+            $container = \Hyperf\Utils\ApplicationContext::getContainer();
+            $this->client = $container->get(\Hyperf\Guzzle\ClientFactory::class)->create([
+                'base_uri' => $endPoint,
+                'defaults' => [
+                    'headers' => [
+                        'Host' => $endPoint
+                    ],
+                    'proxy' => $config->getProxy(),
+                    'expect' => $config->getExpectContinue()
+                ]
+            ]);
+            
+        }else{
+            
+            $this->client = new \GuzzleHttp\Client([
+                'base_uri' => $endPoint,
+                'defaults' => [
+                    'headers' => [
+                        'Host' => $endPoint
+                    ],
+                    'proxy' => $config->getProxy(),
+                    'expect' => $config->getExpectContinue()
+                ]
+            ]);
+        }
     }
 
     private function addRequiredHeaders(BaseRequest &$request)

@@ -16,7 +16,7 @@ Add require to your `composer.json`
 ```json
 {
   "require": {
-     "aliyunmq/mq-http-sdk": ">=1.0.3"
+     "bain2018/alimq": ">=1.0.3"
   }
 }
 ```
@@ -25,7 +25,7 @@ Use Composer to install requires
 composer install
 ``` 
 
-*Note: php version>=5.5.0, and xml extension of php is required.*
+*Note: php version>=8.0.0, and xml extension of php is required.*
 
 ## Note
 1. Http consumer only support timer msg (less than 3 days), no matter the msg is produced from http or tcp protocol.
