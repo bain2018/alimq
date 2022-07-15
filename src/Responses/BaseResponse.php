@@ -37,6 +37,9 @@ abstract class BaseResponse
     protected function loadXmlContent($content)
     {
         $xmlReader = new \XMLReader();
+        //filter special char
+        $content=preg_replace ('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $content);
+
         $isXml = $xmlReader->XML($content);
         if ($isXml === FALSE) {
             throw new MQException($this->statusCode, $content);
